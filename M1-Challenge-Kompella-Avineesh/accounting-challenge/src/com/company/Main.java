@@ -27,14 +27,18 @@ public class Main {
     );
     public static void main(String[] args) {
 
+        // Make new list of (unique) customers
         List<Customer> customerList = new ArrayList<Customer>();
 
+        // Looping through customerData
         for (int i = 0; i < customerData.size(); i++) {
 
+            // Variables to construct Customer object
             boolean unique = true; // To check if current customer we're looking at hasn't already been added
             int id = Integer.parseInt(customerData.get(i)[0]);
             String name = customerData.get(i)[1];
 
+            // Variables to construct AccountRecord object
             AccountRecord a = new AccountRecord();
             int charge = Integer.parseInt(customerData.get(i)[2]);
             String chargeDate = customerData.get(i)[3];
@@ -42,13 +46,14 @@ public class Main {
             a.setChargeDate(chargeDate);
 
             for (Customer c : customerList) {
-                if (c.getId() == id) { // Customer already exists in CustomerList
-                    unique = false; // no need to add to CustomerList
+                if (c.getId() == id) { // Customer already exists in CustomerList (i.e., NOT unique)
+                    unique = false; // no need to add to CustomerList (will be checked on line 57)
                     c.addCharge(a); // still need to add charge
                     break;
                 }
             }
 
+            // Find all the unique customers.
             if (unique) { // Customer not in CustomerList yet -> we can create and add it
                 Customer customer = new Customer();
                 customer.setId(id);
@@ -59,6 +64,7 @@ public class Main {
 
         }
 
+        // All positive accounts
         System.out.println("Positive accounts:");
         for (Customer c : customerList) {
             if (c.getBalance() > 0) {
@@ -67,6 +73,7 @@ public class Main {
             }
         }
 
+        // All negative accounts
         System.out.println("Negative accounts:");
         for (Customer c : customerList) {
             if (c.getBalance() <= 0) {

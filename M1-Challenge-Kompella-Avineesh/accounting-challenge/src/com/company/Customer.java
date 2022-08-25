@@ -24,6 +24,7 @@ public class Customer {
         this.name = name;
     }
 
+    // Sum the charges to get the balance for a customer
     public int getBalance() {
         int balance = 0;
         for (int i = 0; i < this.charges.size(); i++) {
@@ -37,6 +38,7 @@ public class Customer {
         return charges;
     }
 
+    // Add charge to ArrayList of charges to later calculate the balance for customer
     public void addCharge(AccountRecord c) {
         this.charges.add(c);
     }
