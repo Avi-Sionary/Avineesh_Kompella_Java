@@ -14,6 +14,7 @@ public class ChatterbookController {
 
     private List<User> userList;
 
+    // Dummy data for constructor
     public ChatterbookController() {
         User luis = new User("Luis");
         User sue = new User("Sue");
@@ -42,11 +43,13 @@ public class ChatterbookController {
         userList = Arrays.asList(luis, sue, timothy, george, arturo, mariella, paolo, tri, jane, carol, carl);
     }
 
+    // GET route implemented which returns a list of all users
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userList;
     }
 
+    // GET route implemented which returns a single user by user name
     @GetMapping("/users/{name}")
     public User getUserByName(PathVariable name) {
 
@@ -59,6 +62,7 @@ public class ChatterbookController {
         return null;
     }
 
+    // GET route implemented which returns a list of chatterPosts for a user by user name
     @GetMapping("/users/posts/{name}")
     public List<ChatterPost> getPostsByName(PathVariable name) {
 
