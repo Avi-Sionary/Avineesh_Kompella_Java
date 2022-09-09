@@ -16,7 +16,6 @@ public class CalculatorTest {
     // Division tests
     @Test
     public void shouldDividePositives() {
-
         assertEquals(3, calc.divide(6,2));
         assertEquals(2, calc.divide(80, 39));
         assertEquals(1, calc.divide(105, 100));
@@ -24,7 +23,6 @@ public class CalculatorTest {
 
     @Test
     public void shouldDivideNegatives() {
-
         assertEquals(3, calc.divide(-6,-2));
         assertEquals(2, calc.divide(-80, -39));
         assertEquals(1, calc.divide(-105, -100));
