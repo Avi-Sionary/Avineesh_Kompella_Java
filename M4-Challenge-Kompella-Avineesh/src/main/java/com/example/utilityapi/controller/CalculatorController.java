@@ -16,7 +16,7 @@ public class CalculatorController {
     public double divide(@RequestParam int value1, @RequestParam int value2) {
 
         if (value2 == 0) {
-            throw new IllegalArgumentException("Argument 'divisor' is 0");
+            throw new IllegalArgumentException("Error - cannot divide by zero.");
         }
 
         return value1 / value2;
@@ -25,6 +25,10 @@ public class CalculatorController {
     @RequestMapping(value = "/calculator/square/{value}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public int square(@PathVariable int value) {
+
+        if ((long)value * (long)value > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("Error - exceeded maximum integer value.");
+        }
 
         return value * value;
     }

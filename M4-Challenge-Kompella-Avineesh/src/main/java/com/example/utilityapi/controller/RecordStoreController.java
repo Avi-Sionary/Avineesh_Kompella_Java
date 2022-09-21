@@ -4,7 +4,6 @@ import com.example.utilityapi.models.Record;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,15 +33,19 @@ public class RecordStoreController {
 
     @RequestMapping(value = "/records/{id}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Record getRecordById(@PathVariable @Valid int id) {
+    public Record getRecordById(@PathVariable int id) {
 
         Record foundRecord = null;
 
-        for(Record record : recordList) {
-            if(record.getId() == id) {
+        for (Record record : recordList) {
+            if (record.getId() == id) {
                 foundRecord = record;
                 break;
             }
+        }
+
+        if (foundRecord == null) {
+            throw new IllegalArgumentException("Error - invalid record id.");
         }
 
         return foundRecord;
