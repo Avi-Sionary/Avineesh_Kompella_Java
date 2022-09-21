@@ -26,11 +26,12 @@ public class AccountController {
     public Account createAccount(@RequestBody Account account) {
 
         for (Account a : accountList) {
-            if (a.getUsername().equals(account.getUsername())) {
+            if (a.getUsername().equals(account.getUsername())) { // Check that username doesn't already exist
                 throw new IllegalArgumentException("Error - account already exists.");
             }
         }
 
+        // Check if password is 10 characters or less
         int counter = 0;
         String password = account.getPassword();
 

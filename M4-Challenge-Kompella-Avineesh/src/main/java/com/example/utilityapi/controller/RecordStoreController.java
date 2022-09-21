@@ -44,8 +44,8 @@ public class RecordStoreController {
             }
         }
 
-        if (foundRecord == null) {
-            throw new IllegalArgumentException("Error - invalid record id.");
+        if (foundRecord == null) { // No record with given id exists.
+            throw new IllegalArgumentException("Error - invalid record ID.");
         }
 
         return foundRecord;
