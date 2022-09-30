@@ -1,12 +1,12 @@
 package com.company.Summative_1.models;
 
-public class Definition {
+public class Word {
 
     private int id;
     private String word;
     private String definition;
 
-    public Definition(int id, String word, String definition) {
+    public Word(int id, String word, String definition) {
         this.id = id;
         this.word = word;
         this.definition = definition;
