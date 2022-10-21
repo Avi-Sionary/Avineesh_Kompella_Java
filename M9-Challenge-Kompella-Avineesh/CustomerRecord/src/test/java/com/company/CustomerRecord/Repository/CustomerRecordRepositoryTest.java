@@ -26,7 +26,7 @@ public class CustomerRecordRepositoryTest {
     }
 
     @Test
-    public void addGetUpdateDeleteRecordById() {
+    public void addGetDeleteRecord() {
 
         CustomerRecord customerRecord = new CustomerRecord();
         customerRecord.setFirstName("Grand");
@@ -46,14 +46,6 @@ public class CustomerRecordRepositoryTest {
 
         assertEquals(customerRecord1.get(), customerRecord);
 
-        customerRecord.setCompany("Nike");
-        customerRecord.setPostalCode(67890);
-        customerRecord = customerRecordRepository.save(customerRecord);
-
-        Optional<CustomerRecord> customerRecord2 = customerRecordRepository.findById(customerRecord.getId());
-
-        assertEquals(customerRecord2.get(), customerRecord);
-
         customerRecordRepository.deleteById(customerRecord.getId());
 
         customerRecord1 = customerRecordRepository.findById(customerRecord.getId());
@@ -62,7 +54,7 @@ public class CustomerRecordRepositoryTest {
     }
 
     @Test
-    public void GetRecordByState() {
+    public void updateRecord() {
 
         CustomerRecord customerRecord = new CustomerRecord();
         customerRecord.setFirstName("Grand");
@@ -76,10 +68,53 @@ public class CustomerRecordRepositoryTest {
         customerRecord.setState("California");
         customerRecord.setPostalCode(12345);
         customerRecord.setCountry("United States");
+
         customerRecord = customerRecordRepository.save(customerRecord);
 
-        Optional<CustomerRecord> customerRecord1 = customerRecordRepository.findByState(customerRecord.getState());
+        customerRecord.setCompany("Nike");
+        customerRecord.setPostalCode(67890);
 
-        assertEquals(customerRecord1.get(), customerRecord);
+        customerRecord = customerRecordRepository.save(customerRecord);
+
+        Optional<CustomerRecord> customerRecord2 = customerRecordRepository.findById(customerRecord.getId());
+        assertEquals(customerRecord2.get(), customerRecord);
+    }
+
+    @Test
+    public void getRecordByState() {
+
+        CustomerRecord customerRecord = new CustomerRecord();
+        customerRecord.setFirstName("Grand");
+        customerRecord.setLastName("Dad");
+        customerRecord.setEmail("grandDad7@siivagunner.com");
+        customerRecord.setCompany("Siivagunner");
+        customerRecord.setPhone("111-222-3333");
+        customerRecord.setAddress_1("4567 A Fake Street");
+        customerRecord.setAddress_2("Apt 890");
+        customerRecord.setCity("Los Angeles");
+        customerRecord.setState("California");
+        customerRecord.setPostalCode(12345);
+        customerRecord.setCountry("United States");
+
+        customerRecord = customerRecordRepository.save(customerRecord);
+
+        CustomerRecord customerRecord1 = new CustomerRecord();
+        customerRecord1.setFirstName("Clark");
+        customerRecord1.setLastName("Kent");
+        customerRecord1.setEmail("notClarkKent@notAnEmail.com");
+        customerRecord1.setCompany("Daily Planet");
+        customerRecord1.setPhone("444-222-3333");
+        customerRecord1.setAddress_1("4567 A Very Fake Street");
+        customerRecord1.setAddress_2("Apt 420");
+        customerRecord1.setCity("A City");
+        customerRecord1.setState("Arkansas");
+        customerRecord1.setPostalCode(10101);
+        customerRecord1.setCountry("United States");
+
+        customerRecord1 = customerRecordRepository.save(customerRecord1);
+
+        Optional<CustomerRecord> customerRecords = customerRecordRepository.findByState("Arkansas");
+
+        assertEquals(customerRecords.get(), customerRecord1);
     }
 }
