@@ -44,13 +44,11 @@ public class CustomerRecordRepositoryTest {
         customerRecord = customerRecordRepository.save(customerRecord);
 
         Optional<CustomerRecord> customerRecord1 = customerRecordRepository.findById(customerRecord.getId());
-
         assertEquals(customerRecord1.get(), customerRecord);
 
         customerRecordRepository.deleteById(customerRecord.getId());
 
         customerRecord1 = customerRecordRepository.findById(customerRecord.getId());
-
         assertFalse(customerRecord1.isPresent());
     }
 
@@ -114,8 +112,10 @@ public class CustomerRecordRepositoryTest {
 
         customerRecord1 = customerRecordRepository.save(customerRecord1);
 
-        Optional<CustomerRecord> customerRecords = customerRecordRepository.findByState("Arkansas");
+        Optional<CustomerRecord> customerRecordsCali = customerRecordRepository.findByState("California");
+        assertEquals(customerRecordsCali.get(), customerRecord);
 
-        assertEquals(customerRecords.get(), customerRecord1);
+        Optional<CustomerRecord> customerRecordsArk = customerRecordRepository.findByState("Arkansas");
+        assertEquals(customerRecordsArk.get() , customerRecord1);
     }
 }
