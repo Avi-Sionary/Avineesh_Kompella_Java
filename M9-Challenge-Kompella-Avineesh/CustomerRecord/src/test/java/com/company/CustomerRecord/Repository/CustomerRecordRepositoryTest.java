@@ -40,6 +40,7 @@ public class CustomerRecordRepositoryTest {
         customerRecord.setState("California");
         customerRecord.setPostalCode(12345);
         customerRecord.setCountry("United States");
+
         customerRecord = customerRecordRepository.save(customerRecord);
 
         Optional<CustomerRecord> customerRecord1 = customerRecordRepository.findById(customerRecord.getId());
