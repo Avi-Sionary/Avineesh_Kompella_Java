@@ -1,3 +1,6 @@
+## VIDEO SUMMARY:
+https://drive.google.com/file/d/1WVN9meGksWyhJlLsgrpyuCydP2HHGcV8/view?usp=sharing
+
 # Project 2 - Bookstore Inventory
 
 In this assessment, you will build a REST API to manage inventory for a bookstore. In addition, you will produce a 1-3 minute video summary of the project. The requirements and features are detailed below.
