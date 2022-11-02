@@ -19,6 +19,7 @@ public class Publisher implements Serializable{
     private String name;
     private String city;
     private String state;
+    private String street;
     private String postalCode;
     private String phone;
     private String email;
@@ -55,6 +56,14 @@ public class Publisher implements Serializable{
         this.state = state;
     }
 
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
     public String getPostalCode() {
         return postalCode;
     }
@@ -84,19 +93,12 @@ public class Publisher implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Publisher publisher = (Publisher) o;
-        return getPublisher_id() == publisher.getPublisher_id() &&
-                getName().equals(publisher.getName()) &&
-                getCity().equals(publisher.getCity()) &&
-                getState().equals(publisher.getState()) &&
-                getPostalCode().equals(publisher.getPostalCode()) &&
-                getPhone().equals(publisher.getPhone()) &&
-                getEmail().equals(publisher.getEmail());
+        return getPublisher_id() == publisher.getPublisher_id() && getName().equals(publisher.getName()) && getCity().equals(publisher.getCity()) && getState().equals(publisher.getState()) && getStreet().equals(publisher.getStreet()) && getPostalCode().equals(publisher.getPostalCode()) && getPhone().equals(publisher.getPhone()) && getEmail().equals(publisher.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPublisher_id(), getName(), getCity(), getState(), getPostalCode(), getPhone(),
-                getEmail());
+        return Objects.hash(getPublisher_id(), getName(), getCity(), getState(), getStreet(), getPostalCode(), getPhone(), getEmail());
     }
 
     @Override
@@ -106,6 +108,7 @@ public class Publisher implements Serializable{
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
+                ", street='" + street + '\'' +
                 ", postalCode='" + postalCode + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +

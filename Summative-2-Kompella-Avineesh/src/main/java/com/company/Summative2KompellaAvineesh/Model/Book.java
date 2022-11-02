@@ -19,17 +19,16 @@ public class Book implements Serializable {
     @Column(name = "bookId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookId;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "authorId")
-    private Set<Author> authors = new HashSet<>();
-
     private String isbn;
     private LocalDate publish_date;
     private int authorId;
     private String title;
     private int publisherId;
     private BigDecimal price;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "authorId")
+    private Set<Author> authors = new HashSet<>();
 
     public Integer getBookId() {
         return bookId;

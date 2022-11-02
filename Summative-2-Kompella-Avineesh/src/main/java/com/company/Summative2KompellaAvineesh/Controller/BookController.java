@@ -61,8 +61,7 @@ public class BookController {
                     b.setPublisherId(book.getPublisherId());
                     b.setPrice(book.getPrice());
                     return repo.save(book);
-                })
-                .orElseGet(() -> {
+                }) .orElseGet(() -> {
                     book.setBookId(id);
                     return repo.save(book);
                 });

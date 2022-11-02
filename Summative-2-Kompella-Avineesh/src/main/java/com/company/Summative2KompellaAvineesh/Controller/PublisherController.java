@@ -48,6 +48,7 @@ public class PublisherController {
                     p.setName(publisher.getName());
                     p.setCity(publisher.getCity());
                     p.setState(publisher.getState());
+                    p.setStreet(publisher.getStreet());
                     p.setPostalCode(publisher.getPostalCode());
                     p.setPhone(publisher.getPhone());
                     p.setEmail(publisher.getEmail());
