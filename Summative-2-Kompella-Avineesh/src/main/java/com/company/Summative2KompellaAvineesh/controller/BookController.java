@@ -40,7 +40,7 @@ public class BookController {
 
     // Search by author
     @GetMapping("/books/{author}")
-    public List<Book> getBooksByAuthor(@PathVariable String author) {
+    public Optional<Book> getBooksByAuthor(@PathVariable String author) {
         return repo.findByAuthor(author);
     }
 
