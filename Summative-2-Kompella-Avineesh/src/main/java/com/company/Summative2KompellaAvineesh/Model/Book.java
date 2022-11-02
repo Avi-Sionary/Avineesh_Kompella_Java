@@ -23,7 +23,7 @@ public class Book implements Serializable {
     private LocalDate publish_date;
     private int authorId;
     private String title;
-    private int publisherId;
+    private int publisher_id;
     private BigDecimal price;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
@@ -71,11 +71,11 @@ public class Book implements Serializable {
     }
 
     public int getPublisherId() {
-        return publisherId;
+        return publisher_id;
     }
 
-    public void setPublisherId(int publisher_I) {
-        this.publisherId = publisherId;
+    public void setPublisherId(int publisher_id) {
+        this.publisher_id = publisher_id;
     }
 
     public BigDecimal getPrice() {
@@ -113,7 +113,7 @@ public class Book implements Serializable {
                 ", publish_date=" + publish_date +
                 ", authorId=" + authorId +
                 ", title='" + title + '\'' +
-                ", publisherId=" + publisherId +
+                ", publisher_id=" + publisher_id +
                 ", price=" + price +
                 '}';
     }

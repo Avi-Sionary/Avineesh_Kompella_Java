@@ -27,11 +27,7 @@ public class BookController {
     @ResponseStatus(HttpStatus.OK)
     public Book getBookById(@PathVariable int id) {
         Optional<Book> returnVal = repo.findById(id);
-        if (returnVal.isPresent()) {
-            return returnVal.get();
-        } else {
-            return null;
-        }
+        return returnVal.orElse(null);
     }
 
     // Read all

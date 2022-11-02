@@ -5,14 +5,14 @@ create table if not exists book (
   book_id int not null auto_increment primary key,
     isbn varchar (15) not null,
     publish_date date not null,
-    author_id int not null,
+    authorId int not null,
     title varchar (70) not null,
     publisher_id int not null,
     price decimal(5,2) not null
 );
 
 create table if not exists author (
-  author_id int not null auto_increment primary key,
+  authorId int not null auto_increment primary key,
     first_name varchar(50) not null,
     last_name varchar(50) not null,
     street varchar(50) not null,
@@ -35,7 +35,7 @@ create table if not exists publisher (
 );
 
 /* Foreign Keys: book */
-alter table book add constraint fk_book_author foreign key (author_id) references author(author_id);
+alter table book add constraint fk_book_author foreign key (authorId) references author(authorId);
 alter table book add constraint fk_book_publisher foreign key (publisher_id) references publisher(publisher_id);
 
 
@@ -47,14 +47,14 @@ create table if not exists book (
   book_id int not null auto_increment primary key,
     isbn varchar (15) not null,
     publish_date date not null,
-    author_id int not null,
+    authorId int not null,
     title varchar (70) not null,
     publisher_id int not null,
     price decimal(5,2) not null
 );
 
 create table if not exists author (
-  author_id int not null auto_increment primary key,
+  authorId int not null auto_increment primary key,
     first_name varchar(50) not null,
     last_name varchar(50) not null,
     street varchar(50) not null,
@@ -77,5 +77,5 @@ create table if not exists publisher (
 );
 
 /* Foreign Keys: book */
-alter table book add constraint fk_book_author foreign key (author_id) references author(author_id);
+alter table book add constraint fk_book_author foreign key (authorId) references author(authorId);
 alter table book add constraint fk_book_publisher foreign key (publisher_id) references publisher(publisher_id);
