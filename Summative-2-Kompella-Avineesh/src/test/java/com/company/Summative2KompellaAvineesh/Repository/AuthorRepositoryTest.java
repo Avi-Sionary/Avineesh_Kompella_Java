@@ -34,7 +34,7 @@ public class AuthorRepositoryTest {
         author.setLast_name("Stoker");
         author.setStreet("Clontarf");
         author.setCity("Dublin");
-        author.setState("California"); // Because Ireland isn't a state
+        author.setState("CA"); // Because Ireland isn't a state
         author.setPostal_code("12345");
         author.setPhone("123-456-7890");
         author.setEmail("StokerIsDead@gmail.com");
@@ -61,7 +61,7 @@ public class AuthorRepositoryTest {
         author1.setLast_name("Stoker");
         author1.setStreet("Clontarf");
         author1.setCity("Dublin");
-        author1.setState("California"); // Because Ireland isn't a state
+        author1.setState("CA"); // Because Ireland isn't a state
         author1.setPostal_code("12345");
         author1.setPhone("123-456-7890");
         author1.setEmail("StokerIsDead@gmail.com");
@@ -73,7 +73,7 @@ public class AuthorRepositoryTest {
         author2.setLast_name("Name");
         author2.setStreet("A Street");
         author2.setCity("Portland");
-        author2.setState("Oregon");
+        author2.setState("OR");
         author2.setPostal_code("99999");
         author2.setPhone("999-999-9999");
         author2.setEmail("myEmail@yahoo.com");
@@ -94,7 +94,7 @@ public class AuthorRepositoryTest {
         author.setLast_name("Stoker");
         author.setStreet("Clontarf");
         author.setCity("Dublin");
-        author.setState("California"); // Because Ireland isn't a state
+        author.setState("CA"); // Because Ireland isn't a state
         author.setPostal_code("12345");
         author.setPhone("123-456-7890");
         author.setEmail("StokerIsDead@gmail.com");
