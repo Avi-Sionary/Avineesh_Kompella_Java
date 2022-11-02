@@ -1,14 +1,25 @@
 package com.company.Summative2KompellaAvineesh.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
 import java.util.Objects;
 
-public class Publisher {
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name="publisher")
+public class Publisher implements Serializable{
 
+    @Id
+    @Column(name = "publisher_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int publisher_id;
     private String name;
     private String city;
     private String state;
-    private String postal_code;
+    private String postalCode;
     private String phone;
     private String email;
 
@@ -44,12 +55,12 @@ public class Publisher {
         this.state = state;
     }
 
-    public String getPostal_code() {
-        return postal_code;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setPostal_code(String postal_code) {
-        this.postal_code = postal_code;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getPhone() {
@@ -77,14 +88,14 @@ public class Publisher {
                 getName().equals(publisher.getName()) &&
                 getCity().equals(publisher.getCity()) &&
                 getState().equals(publisher.getState()) &&
-                getPostal_code().equals(publisher.getPostal_code()) &&
+                getPostalCode().equals(publisher.getPostalCode()) &&
                 getPhone().equals(publisher.getPhone()) &&
                 getEmail().equals(publisher.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPublisher_id(), getName(), getCity(), getState(), getPostal_code(), getPhone(),
+        return Objects.hash(getPublisher_id(), getName(), getCity(), getState(), getPostalCode(), getPhone(),
                 getEmail());
     }
 
@@ -95,7 +106,7 @@ public class Publisher {
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
-                ", postal_code='" + postal_code + '\'' +
+                ", postalCode='" + postalCode + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 '}';

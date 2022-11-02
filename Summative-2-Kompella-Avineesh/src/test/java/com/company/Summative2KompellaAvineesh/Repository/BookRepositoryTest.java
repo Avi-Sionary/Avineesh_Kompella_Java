@@ -51,7 +51,7 @@ public class BookRepositoryTest {
         publisher.setName("Archibald Constable and Company");
         publisher.setCity("London");
         publisher.setCity("Michigan"); // Because the UK isn't a state
-        publisher.setPostal_code("66666");
+        publisher.setPostalCode("66666");
         publisher.setPhone("908-765-4321");
         publisher.setEmail("publishing@ArchibaldConstable.com");
 
@@ -59,8 +59,8 @@ public class BookRepositoryTest {
         book.setIsbn("978-3-16-148410-0"); // I googled this lol
         LocalDate date = LocalDate.of(1897, 5, 26);
         book.setPublish_date(date);
-        book.setAuthor_id(author.getAuthor_id());
-        book.setPublisher_id(publisher.getPublisher_id());
+        book.setAuthorId(author.getAuthorId());
+        book.setPublisherId(publisher.getPublisher_id());
         book.setTitle("Dracula");
         book.setPrice(BigDecimal.valueOf(32.49));
 
@@ -68,12 +68,12 @@ public class BookRepositoryTest {
         book = bookRepository.save(book);
 
         // Get
-        Optional<Book> bookCopy = bookRepository.findById(book.getBook_id());
+        Optional<Book> bookCopy = bookRepository.findById(book.getBookId());
         assertEquals(bookCopy.get(), book);
 
         // Delete
-        bookRepository.deleteById(book.getBook_id());
-        bookCopy = bookRepository.findById(book.getBook_id());
+        bookRepository.deleteById(book.getBookId());
+        bookCopy = bookRepository.findById(book.getBookId());
         assertFalse(bookCopy.isPresent());
 
     }
@@ -96,7 +96,7 @@ public class BookRepositoryTest {
         publisher1.setName("Archibald Constable and Company");
         publisher1.setCity("London");
         publisher1.setCity("Michigan"); // Because the UK isn't a state
-        publisher1.setPostal_code("66666");
+        publisher1.setPostalCode("66666");
         publisher1.setPhone("908-765-4321");
         publisher1.setEmail("publishing@ArchibaldConstable.com");
 
@@ -104,8 +104,8 @@ public class BookRepositoryTest {
         book1.setIsbn("978-3-16-148410-0"); // I googled this lol
         LocalDate date = LocalDate.of(1897, 5, 26);
         book1.setPublish_date(date);
-        book1.setAuthor_id(author1.getAuthor_id());
-        book1.setPublisher_id(publisher1.getPublisher_id());
+        book1.setAuthorId(author1.getAuthorId());
+        book1.setPublisherId(publisher1.getPublisher_id());
         book1.setTitle("Dracula");
         book1.setPrice(BigDecimal.valueOf(32.49));
 
@@ -125,7 +125,7 @@ public class BookRepositoryTest {
         publisher2.setName("A Publisher");
         publisher2.setCity("New York City");
         publisher2.setCity("New York");
-        publisher2.setPostal_code("11111");
+        publisher2.setPostalCode("11111");
         publisher2.setPhone("111-111-1111");
         publisher2.setEmail("publishing@APublisher.com");
 
@@ -133,8 +133,8 @@ public class BookRepositoryTest {
         book2.setIsbn("918-2-13-141410-0");
         LocalDate date2 = LocalDate.of(2018, 8, 13);
         book2.setPublish_date(date);
-        book2.setAuthor_id(author2.getAuthor_id());
-        book2.setPublisher_id(publisher2.getPublisher_id());
+        book2.setAuthorId(author2.getAuthorId());
+        book2.setPublisherId(publisher2.getPublisher_id());
         book2.setTitle("A Big Stupid Book");
         book2.setPrice(BigDecimal.valueOf(32.49));
 
@@ -144,8 +144,8 @@ public class BookRepositoryTest {
         book3.setIsbn("988-1-11-111410-0");
         LocalDate date3 = LocalDate.of(2020, 9, 1);
         book3.setPublish_date(date);
-        book3.setAuthor_id(author2.getAuthor_id());
-        book3.setPublisher_id(publisher2.getPublisher_id());
+        book3.setAuthorId(author2.getAuthorId());
+        book3.setPublisherId(publisher2.getPublisher_id());
         book3.setTitle("Another Big Stupid Book");
         book3.setPrice(BigDecimal.valueOf(32.49));
 
@@ -174,7 +174,7 @@ public class BookRepositoryTest {
         publisher.setName("Archibald Constable and Company");
         publisher.setCity("London");
         publisher.setCity("Michigan"); // Because the UK isn't a state
-        publisher.setPostal_code("66666");
+        publisher.setPostalCode("66666");
         publisher.setPhone("908-765-4321");
         publisher.setEmail("publishing@ArchibaldConstable.com");
 
@@ -182,17 +182,29 @@ public class BookRepositoryTest {
         book.setIsbn("978-3-16-148410-0"); // I googled this lol
         LocalDate date = LocalDate.of(1897, 5, 26);
         book.setPublish_date(date);
-        book.setAuthor_id(author.getAuthor_id());
-        book.setPublisher_id(publisher.getPublisher_id());
+        book.setAuthorId(author.getAuthorId());
+        book.setPublisherId(publisher.getPublisher_id());
         book.setTitle("Dracula");
         book.setPrice(BigDecimal.valueOf(32.49));
 
         // Add
         book = bookRepository.save(book);
 
+        Book book1 = new Book();
+        book1.setIsbn("111-2-33-445566-7");
+        LocalDate newDate = LocalDate.of(1875,1,1);
+        book1.setPublish_date(newDate);
+        book1.setAuthorId(author.getAuthorId());
+        book1.setPublisherId(publisher.getPublisher_id());
+        book1.setTitle("Chain of Destiny");
+        book1.setPrice(BigDecimal.valueOf(1.99));
+
         // Get by author
-        Optional<Book> Dracula = bookRepository.findByAuthor("Bram Stoker");
-        assertEquals(Dracula.get().getAuthor_id(), book.getAuthor_id());
+        List<Book> stokers = bookRepository.findAllBooksByAuthorId(author.getAuthorId());
+
+        for (Book b : stokers) {
+            assertEquals(b.getAuthorId(), book.getAuthorId());
+        }
 
     }
 
@@ -214,7 +226,7 @@ public class BookRepositoryTest {
         publisher.setName("Archibald Constable and Company");
         publisher.setCity("London");
         publisher.setState("Michigan"); // Because the UK isn't a state
-        publisher.setPostal_code("66666");
+        publisher.setPostalCode("66666");
         publisher.setPhone("908-765-4321");
         publisher.setEmail("publishing@ArchibaldConstable.com");
 
@@ -222,8 +234,8 @@ public class BookRepositoryTest {
         book.setIsbn("978-3-16-148410-0"); // I googled this lol
         LocalDate date = LocalDate.of(1897, 5, 26);
         book.setPublish_date(date);
-        book.setAuthor_id(author.getAuthor_id());
-        book.setPublisher_id(publisher.getPublisher_id());
+        book.setAuthorId(author.getAuthorId());
+        book.setPublisherId(publisher.getPublisher_id());
         book.setTitle("Dracula");
         book.setPrice(BigDecimal.valueOf(32.49));
 
@@ -236,7 +248,7 @@ public class BookRepositoryTest {
         book.setPublish_date(newDate);
         book = bookRepository.save(book);
 
-        Optional<Book> theBook = bookRepository.findById(book.getBook_id());
+        Optional<Book> theBook = bookRepository.findById(book.getBookId());
         assertEquals(theBook.get(), book);
 
     }

@@ -1,10 +1,27 @@
 package com.company.Summative2KompellaAvineesh.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
-public class Author {
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name="author")
+public class Author implements Serializable {
 
-    private int author_id;
+    @Id
+    @Column(name = "authorId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int authorId;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "bookId")
+    private Set<Book> books = new HashSet<>();
+
     private String first_name;
     private String last_name;
     private String street;
@@ -14,12 +31,12 @@ public class Author {
     private String phone;
     private String email;
 
-    public int getAuthor_id() {
-        return author_id;
+    public Integer getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
+    public void setAuthor_id(int authorId) {
+        this.authorId = authorId;
     }
 
     public String getFirst_name() {
@@ -91,7 +108,7 @@ public class Author {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
-        return getAuthor_id() == author.getAuthor_id() &&
+        return getAuthorId() == author.getAuthorId() &&
                 getFirst_name().equals(author.getFirst_name()) &&
                 getLast_name().equals(author.getLast_name()) &&
                 getStreet().equals(author.getStreet()) &&
@@ -104,14 +121,14 @@ public class Author {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getAuthor_id(), getFirst_name(), getLast_name(), getStreet(), getCity(), getState(),
+        return Objects.hash(getAuthorId(), getFirst_name(), getLast_name(), getStreet(), getCity(), getState(),
                 getPostal_code(), getPhone(), getEmail());
     }
 
     @Override
     public String toString() {
         return "Author{" +
-                "author_id=" + author_id +
+                "authorId=" + authorId +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", street='" + street + '\'' +

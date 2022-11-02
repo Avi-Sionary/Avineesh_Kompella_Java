@@ -18,11 +18,7 @@ import static org.junit.Assert.*;
 public class AuthorRepositoryTest {
 
     @Autowired
-    BookRepository bookRepository;
-    @Autowired
     AuthorRepository authorRepository;
-    @Autowired
-    PublisherRepository publisherRepository;
 
     @Before
     public void setUp() throws Exception {
@@ -46,12 +42,12 @@ public class AuthorRepositoryTest {
         author = authorRepository.save(author);
 
         // Get
-        Optional<Author> authorCopy = authorRepository.findById(author.getAuthor_id());
+        Optional<Author> authorCopy = authorRepository.findById(author.getAuthorId());
         assertEquals(authorCopy.get(), author);
 
         // Delete
-        authorRepository.deleteById(author.getAuthor_id());
-        authorCopy = authorRepository.findById(author.getAuthor_id());
+        authorRepository.deleteById(author.getAuthorId());
+        authorCopy = authorRepository.findById(author.getAuthorId());
         assertFalse(authorCopy.isPresent());
 
     }
@@ -111,7 +107,7 @@ public class AuthorRepositoryTest {
         author.setStreet("Brooklyn");
         author = authorRepository.save(author);
 
-        Optional<Author> theAuthor = authorRepository.findById(author.getAuthor_id());
+        Optional<Author> theAuthor = authorRepository.findById(author.getAuthorId());
         assertEquals(theAuthor.get(), author);
 
     }

@@ -36,8 +36,8 @@ public class PublisherRepositoryTest {
         Publisher publisher = new Publisher();
         publisher.setName("Archibald Constable and Company");
         publisher.setCity("London");
-        publisher.setCity("Michigan"); // Because the UK isn't a state
-        publisher.setPostal_code("66666");
+        publisher.setState("Michigan"); // Because the UK isn't a state
+        publisher.setPostalCode("66666");
         publisher.setPhone("908-765-4321");
         publisher.setEmail("publishing@ArchibaldConstable.com");
 
@@ -63,7 +63,7 @@ public class PublisherRepositoryTest {
         publisher1.setName("Archibald Constable and Company");
         publisher1.setCity("London");
         publisher1.setCity("Michigan"); // Because the UK isn't a state
-        publisher1.setPostal_code("66666");
+        publisher1.setPostalCode("66666");
         publisher1.setPhone("908-765-4321");
         publisher1.setEmail("publishing@ArchibaldConstable.com");
 
@@ -73,7 +73,7 @@ public class PublisherRepositoryTest {
         publisher2.setName("A Publisher");
         publisher2.setCity("New York City");
         publisher2.setCity("New York");
-        publisher2.setPostal_code("11111");
+        publisher2.setPostalCode("11111");
         publisher2.setPhone("111-111-1111");
         publisher2.setEmail("publishing@APublisher.com");
 
@@ -92,7 +92,7 @@ public class PublisherRepositoryTest {
         publisher.setName("Archibald Constable and Company");
         publisher.setCity("London");
         publisher.setState("Michigan"); // Because the UK isn't a state
-        publisher.setPostal_code("66666");
+        publisher.setPostalCode("66666");
         publisher.setPhone("908-765-4321");
         publisher.setEmail("publishing@ArchibaldConstable.com");
 

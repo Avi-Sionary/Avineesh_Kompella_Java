@@ -1,25 +1,42 @@
 package com.company.Summative2KompellaAvineesh.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Book {
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name="book")
+public class Book implements Serializable {
 
-    private int book_id;
+    @Id
+    @Column(name = "bookId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int bookId;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "authorId")
+    private Set<Author> authors = new HashSet<>();
+
     private String isbn;
     private LocalDate publish_date;
-    private int author_id;
+    private int authorId;
     private String title;
-    private int publisher_id;
+    private int publisherId;
     private BigDecimal price;
 
-    public int getBook_id() {
-        return book_id;
+    public Integer getBookId() {
+        return bookId;
     }
 
-    public void setBook_id(int book_id) {
-        this.book_id = book_id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     public String getIsbn() {
@@ -38,12 +55,12 @@ public class Book {
         this.publish_date = publish_date;
     }
 
-    public int getAuthor_id() {
-        return author_id;
+    public int getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 
     public String getTitle() {
@@ -54,12 +71,12 @@ public class Book {
         this.title = title;
     }
 
-    public int getPublisher_id() {
-        return publisher_id;
+    public int getPublisherId() {
+        return publisherId;
     }
 
-    public void setPublisher_id(int publisher_id) {
-        this.publisher_id = publisher_id;
+    public void setPublisherId(int publisher_I) {
+        this.publisherId = publisherId;
     }
 
     public BigDecimal getPrice() {
@@ -75,9 +92,9 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return getBook_id() == book.getBook_id() &&
-                getAuthor_id() == book.getAuthor_id() &&
-                getPublisher_id() == book.getPublisher_id() &&
+        return getBookId() == book.getBookId() &&
+                getAuthorId() == book.getAuthorId() &&
+                getPublisherId() == book.getPublisherId() &&
                 getIsbn().equals(book.getIsbn()) &&
                 getPublish_date().equals(book.getPublish_date()) &&
                 getTitle().equals(book.getTitle()) &&
@@ -86,19 +103,18 @@ public class Book {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getBook_id(), getIsbn(), getPublish_date(), getAuthor_id(), getTitle(), getPublisher_id(),
-                getPrice());
+        return Objects.hash(getBookId(), getIsbn(), getPublish_date(), getAuthorId(), getTitle(), getPublisherId(), getPrice());
     }
 
     @Override
     public String toString() {
         return "Book{" +
-                "book_id=" + book_id +
+                "bookId=" + bookId +
                 ", isbn='" + isbn + '\'' +
                 ", publish_date=" + publish_date +
-                ", author_id=" + author_id +
+                ", authorId=" + authorId +
                 ", title='" + title + '\'' +
-                ", publisher_id=" + publisher_id +
+                ", publisherId=" + publisherId +
                 ", price=" + price +
                 '}';
     }
