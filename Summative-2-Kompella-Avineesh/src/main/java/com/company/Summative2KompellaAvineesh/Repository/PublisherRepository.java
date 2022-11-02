@@ -1,6 +1,6 @@
-package com.company.Summative2KompellaAvineesh.repository;
+package com.company.Summative2KompellaAvineesh.Repository;
 
-import com.company.Summative2KompellaAvineesh.model.Publisher;
+import com.company.Summative2KompellaAvineesh.Model.Publisher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,9 +1,8 @@
-package com.company.Summative2KompellaAvineesh.repository;
+package com.company.Summative2KompellaAvineesh.Repository;
 
-import com.company.Summative2KompellaAvineesh.model.Publisher;
+import com.company.Summative2KompellaAvineesh.Model.Publisher;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.After;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +17,10 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class PublisherRepositoryTest {
 
+    @Autowired
+    BookRepository bookRepository;
+    @Autowired
+    AuthorRepository authorRepository;
     @Autowired
     PublisherRepository publisherRepository;
 

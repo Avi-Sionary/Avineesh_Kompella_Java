@@ -1,4 +1,4 @@
-package com.company.Summative2KompellaAvineesh.model;
+package com.company.Summative2KompellaAvineesh.Model;
 
 import java.util.Objects;
 

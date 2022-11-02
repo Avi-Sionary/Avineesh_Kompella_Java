@@ -1,7 +1,7 @@
-package com.company.Summative2KompellaAvineesh.controller;
+package com.company.Summative2KompellaAvineesh.Controller;
 
-import com.company.Summative2KompellaAvineesh.model.Book;
-import com.company.Summative2KompellaAvineesh.repository.BookRepository;
+import com.company.Summative2KompellaAvineesh.Model.Book;
+import com.company.Summative2KompellaAvineesh.Repository.BookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
